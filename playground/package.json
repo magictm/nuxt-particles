@@ -1,13 +1,13 @@
 {
-  "private": true,
-  "name": "nuxt-particles-playground",
-  "type": "module",
-  "scripts": {
-    "dev": "nuxi dev",
-    "build": "nuxi build",
-    "generate": "nuxi generate"
-  },
-  "devDependencies": {
-    "nuxt": "^4.2.0"
-  }
+    "private": true,
+    "name": "nuxt-particles-playground",
+    "type": "module",
+    "scripts": {
+        "dev": "nuxi dev",
+        "build": "nuxi build",
+        "generate": "nuxi generate"
+    },
+    "devDependencies": {
+        "nuxt": "^4.2.0"
+    }
 }

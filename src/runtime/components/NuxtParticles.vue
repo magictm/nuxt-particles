@@ -12,19 +12,23 @@ import type {
 } from '@tsparticles/engine'
 import { loadParticles } from '../lib/loaders'
 
-const particlesLoaded = useState('__nuxt_particles_loaded', () => false)
-const container = ref<ParticlesContainer | undefined>(undefined)
-const { mode, lazy } = useRuntimeConfig().public.particles
-
-const props = defineProps<{
+interface Props {
     id: string
     options?: ParticlesOptions
     url?: string
-}>()
+}
 
-const emit = defineEmits<{
-    load: [container: ParticlesContainer]
-}>()
+interface Emits {
+    load: (container: ParticlesContainer) => void
+}
+
+const props = defineProps<Props>()
+
+const emit = defineEmits<Emits>()
+
+const particlesLoaded = useState('__nuxt_particles_loaded', () => false)
+const container = ref<ParticlesContainer | undefined>(undefined)
+const { mode, lazy } = useRuntimeConfig().public.particles
 
 onMounted(async () => {
     if (lazy && mode !== 'custom' && !particlesLoaded.value) {
