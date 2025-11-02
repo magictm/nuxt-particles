@@ -2,16 +2,9 @@
   "name": "@magictm/nuxt-particles",
   "version": "1.0.0",
   "description": "Run lightweight, heavily customizable particle simulations in your Nuxt project with tsParticles.",
-  "repository": "Joepocalyptic/nuxt-particles",
+  "repository": "magictm/nuxt-particles",
   "license": "MIT",
   "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
-    }
-  },
   "keywords": [
     "nuxt",
     "particles",
@@ -27,18 +20,33 @@
     "fireworks",
     "snow"
   ],
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    }
+  },
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
-    "dev": "nuxi dev playground",
+    "prepack": "nuxt-module-build build",
+    "dev": "npm run dev:prepare && nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "release": "pnpm run prepack && changelogen --release --push && pnpm publish",
-    "lint": "eslint ."
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
     "@nuxt/kit": "^4.2.0",
@@ -58,6 +66,7 @@
     "changelogen": "^0.6.2",
     "eslint": "^9.39.0",
     "nuxt": "^4.2.0",
-    "vitest": "^4.0.6"
+    "vitest": "^4.0.6",
+    "vue-tsc": "^3.1.2"
   }
 }
