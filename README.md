@@ -7,21 +7,21 @@
 
 Run lightweight, heavily customizable particle simulations in your Nuxt project with tsParticles.
 
-- [📖 &nbsp;Documentation](https://nuxt-particles.joeypereira.dev)
-- [✨ &nbsp;Release Notes](/CHANGELOG.md)
-- [🏀 Online playground](https://stackblitz.com/github/Joepocalyptic/nuxt-particles?file=playground%2Fapp.vue)
+-   [📖 &nbsp;Documentation](https://nuxt-particles.joeypereira.dev)
+-   [✨ &nbsp;Release Notes](/CHANGELOG.md)
+-   [🏀 Online playground](https://stackblitz.com/github/Joepocalyptic/nuxt-particles?file=playground%2Fapp.vue)
 
 ## Features
 
-- Built for **Nuxt 4** (Nuxt 3 support on https://github.com/Joepocalyptic/nuxt-particles)
-- **Lazy loading** by default
-- Built-in full, slim, and basic bundles, or
-- Use a custom bundle for extra performance
-- All with just **one component**!
+-   Built for **Nuxt 4** (Nuxt 3 support on https://github.com/Joepocalyptic/nuxt-particles)
+-   **Lazy loading** by default
+-   Built-in full, slim, and basic bundles, or
+-   Use a custom bundle for extra performance
+-   All with just **one component**!
 
 ## Quick Setup
 
-1. Add the `nuxt-particles` dependency to your project
+1. Add the `@magictm/nuxt-particles` dependency to your project
 
 ```bash
 # Using pnpm
@@ -34,12 +34,12 @@ yarn add --dev @magictm/nuxt-particles
 npm install --save-dev @magictm/nuxt-particles
 ```
 
-2. Add `nuxt-particles` to the `modules` section of `nuxt.config.ts`
+2. Add `@magictm/nuxt-particles` to the `modules` section of `nuxt.config.ts`
 
 ```js
 export default defineNuxtConfig({
-  modules: ["nuxt-particles"],
-});
+    modules: ['@magictm/nuxt-particles'],
+})
 ```
 
 That's it! You can now use the &lt;NuxtParticles&gt; component in your application! ✨
@@ -52,33 +52,33 @@ Example:
 
 ```vue
 <template>
-  <NuxtParticles
-    id="tsparticles"
-    url="/path/to/particles.json"
-    @load="onLoad"
-  ></NuxtParticles>
+    <NuxtParticles
+        id="tsparticles"
+        url="/path/to/particles.json"
+        @load="onLoad"
+    ></NuxtParticles>
 
-  <!-- or -->
+    <!-- or -->
 
-  <NuxtParticles
-    id="tsparticles"
-    :options="options"
-    @load="onLoad"
-  ></NuxtParticles>
+    <NuxtParticles
+        id="tsparticles"
+        :options="options"
+        @load="onLoad"
+    ></NuxtParticles>
 </template>
 
 <script setup lang="ts">
-import type { Container } from "@tsparticles/engine";
+import type { Container } from '@tsparticles/engine'
 
 const options = {
-  // See https://particles.js.org/docs/interfaces/tsParticles_Engine.Options_Interfaces_IOptions.IOptions.html
-};
+    // See https://particles.js.org/docs/interfaces/tsParticles_Engine.Options_Interfaces_IOptions.IOptions.html
+}
 
 const onLoad = (container: Container) => {
-  // Do something with the container
-  container.pause();
-  setTimeout(() => container.play(), 2000);
-};
+    // Do something with the container
+    container.pause()
+    setTimeout(() => container.play(), 2000)
+}
 </script>
 ```
 
